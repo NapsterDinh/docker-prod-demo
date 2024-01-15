@@ -1,0 +1,19 @@
+version: '1.0'
+services:
+  pro-demo:
+    ports:
+      - "3000:3000"
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - "/app/node_modules"
+      - ".:/app"
+  testing:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - "/app/node_modules"
+      - ".:/app"
+    command: ['npm', 'test']
